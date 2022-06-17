@@ -20,10 +20,16 @@ class Button:  # Creation de la classe boutton
                          self.width, self.height), 2)
 
         if self.text:
-            button_font = get_font(22)
+            button_font = get_font(18)
             text_surface = button_font.render(self.text, 1, self.text_color)
             win.blit(text_surface, (self.x + self.width/2 - text_surface.get_width() /
                      2, self.y + self.height/2 - text_surface.get_height()/2))
 
-    def clicked(self, pos):
-        pass
+    def clicked(self, pos):  # vérifier que l'on clique sur le bouton
+        x, y = pos
+        if not (x >= self.x and x <= self.x + self.width):
+            return False
+        if not (y >= self.y and y <= self.y + self.height):
+            return False
+
+        return True
